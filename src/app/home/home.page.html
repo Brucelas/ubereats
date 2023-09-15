@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container" id="c1">
+    <img src="https://www.duoc.cl/wp-content/themes/wordpress-duoc-cl/images/logo-duoc.svg" id="logo">
+  </div>
+  <div class="container" id="c2">
+    <ion-card style="background-color: rgba(243, 243, 243, 0.801);">
+      <ion-card-header>
+        <ion-card-title style="color: black;">Bienvenidos!</ion-card-title>
+        <ion-card-subtitle style="color: black;">Inicio de sesion</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content style="color: black;">
+        <ion-input type="email" fill="transparent" label="Correo Electronico" labelPlacement="floating" helperText="Ingrese un correo valido"
+        errorText="Correo invalido" ngModel email></ion-input>
+        <ion-input type="password" fill="transparent" label="Contraseña" labelPlacement="floating" helperText="Ingrese una contraseña"
+        errorText="Contraseña invalida" ngModel password></ion-input>
+        <ion-button size="small" id="om" routerLink="/copa">Continuar</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

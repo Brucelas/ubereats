@@ -1,0 +1,43 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container" id="c1">
+    <img
+      src="https://s3-alpha-sig.figma.com/img/6520/acaa/52305b5b17db3fa732b36a825d116688?Expires=1695600000&Signature=J1iJgNOEuN5vwnJKgkMEMPjWjGv~qPp17GTcPchkM-m17HdRv1tG46SL6CD6Ua8By9Wnl7Asb9C5kC8qhTthAUN2YxcuC2WcELoupYDm~AtVoBUsdN-mMBarBzTJgx9~BeuC2VeVifnWCLknEHbgem2pVT2Ufl1jiQSEOvZL9U8fHOsu-RUSy9kL~r-5E9nK29Kz7njb8ApqDM2nhG0KNWRTL2e735seebyrPvddFbD2kZTZKWKBjRaUvCSVC0-ZY8ZMM-y3dNOmEzlzEtVuI4SvRXOF8RHeRlwkTpdKKgEeRerdbJgUGStv6vMPloifbCBDGFsvOcYjUykukKA-Ag__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+      id="c1">
+  </div>
+  <div class="container" id="c3">
+    <br>
+    <ion-card style="background-color: #1f2949;;">
+      <ion-card-header>
+        <ion-card-title>Seleccione tipo de usuario</ion-card-title>
+      </ion-card-header>
+        <div class="ion-padding">
+          <ion-item>
+            <ion-select [(ngModel)]="selectedVal">
+              <ion-select-option *ngFor="let item of data xd" [value] ="item.id">
+                {{item.name}}
+              </ion-select-option>
+            </ion-select>
+            
+          </ion-item>
+        </div>
+      <ion-card-content>
+        <ion-footer>
+          <ion-toolbar class="ion-center">
+            <ion-button (click)="redirigirSegunSeleccion()" expand="full">
+              Redirigir
+            </ion-button>
+          </ion-toolbar>
+        </ion-footer>
+      </ion-card-content>
+      
+    </ion-card>
+
+  </div>
+
+</ion-content>
