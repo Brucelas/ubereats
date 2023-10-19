@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'pasa',
     loadChildren: () => import('./pasa/pasa.module').then( m => m.PasaPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
 ];
 
 @NgModule({
