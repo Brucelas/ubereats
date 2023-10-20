@@ -50,7 +50,7 @@ this.formularioLogin = this.fb.group({
     } else {
       const alert = await this.alertController.create({
         header: 'Usuario no encontrado',
-        message: 'El usuario no existe en el almacenamiento local',
+        message: 'El usuario no esta registrado',
         buttons: ['Aceptar']
       });
   
