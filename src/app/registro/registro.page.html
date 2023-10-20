@@ -28,7 +28,7 @@
         <ion-input type="password" fill="transparent" label="Confirmar contraseña" labelPlacement="floating" helperText="Vuelva a ingresar su contraseña" 
         ngModel password formControlName="confirmarPassword"></ion-input>
 
-        <ion-button size="small" id="om" (click)="guardar()">Registrarse</ion-button>
+        <ion-button size="small" id="om" (click)="guardar()" [routerLink]="['/home']">Registrarse</ion-button>
       </ion-card-content>
     </ion-card>
 
