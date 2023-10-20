@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { HomePage } from '../home/home.page';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-copa',
@@ -11,11 +11,26 @@ import { HomePage } from '../home/home.page';
 export class CopaPage {
   selectedVal: number = 1;
   data: any[] = [];
-  
-  constructor(private platform: Platform, private router: Router) {
+  formularioLogin: FormGroup;
+  usuario: any = {}; // Declarar la variable usuario
+
+  constructor(private platform: Platform, private router: Router, public alertController: AlertController, public fb: FormBuilder, public navCtrl: NavController) {
     this.platform.ready().then(() => {
       this.data = [{ id: 1, name: "Conductor" }, { id: 2, name: "Pasajero" }];
     });
+
+    this.formularioLogin = this.fb.group({
+      'nombre': new FormControl("", Validators.required),
+      'password': new FormControl("", Validators.required)
+    });
+  }
+
+  ionViewWillEnter() {
+    // Cargar datos del usuario desde el localStorage al entrar en la página
+    var usuarioData = localStorage.getItem('usuario');
+    if (usuarioData) {
+      this.usuario = JSON.parse(usuarioData);
+    }
   }
 
   redirigirSegunSeleccion() {
@@ -23,6 +38,24 @@ export class CopaPage {
       this.router.navigate(['/condu']);
     } else if (this.selectedVal === 2) {
       this.router.navigate(['/pasa']);
+    }
+  }
+
+  async ingresar() {
+    var f = this.formularioLogin.value;
+
+    if (this.usuario.nombre === f.nombre && this.usuario.password === f.password) {
+      console.log('Ingresado');
+      localStorage.setItem('Ingresado', 'true');
+      this.navCtrl.navigateRoot('copa');
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Datos Incorrectos',
+        message: 'Los datos que ingresaste son incorrectos',
+        buttons: ['Aceptar']
+      });
+
+      await alert.present();
     }
   }
 }
