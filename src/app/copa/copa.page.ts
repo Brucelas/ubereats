@@ -12,7 +12,7 @@ export class CopaPage {
   selectedVal: number = 1;
   data: any[] = [];
   formularioLogin: FormGroup;
-  usuario: any = {}; // Declarar la variable usuario
+  usuario: any = {}; 
 
   constructor(private platform: Platform, private router: Router, public alertController: AlertController, public fb: FormBuilder, public navCtrl: NavController) {
     this.platform.ready().then(() => {
@@ -26,7 +26,7 @@ export class CopaPage {
   }
 
   ionViewWillEnter() {
-    // Cargar datos del usuario desde el localStorage al entrar en la página
+   
     var usuarioData = localStorage.getItem('usuario');
     if (usuarioData) {
       this.usuario = JSON.parse(usuarioData);
