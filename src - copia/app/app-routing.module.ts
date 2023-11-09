@@ -34,7 +34,6 @@ const routes: Routes = [
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
     canActivate: [NoIngresadoGuard]
   },
-  
 ];
 
 @NgModule({

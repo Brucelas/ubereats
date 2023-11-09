@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container" id="c1">
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="container" style="margin: auto;" id="logo">
+      <img src="https://www.duoc.cl/wp-content/themes/wordpress-duoc-cl/images/logo-duoc.svg">
+    </div>
+  </div>
+  <div class="container" id="c2">
+    <ion-card style="background-color: rgba(243, 243, 243, 0.801);">
+      <ion-card-header>
+        <ion-card-title style="color: black;">Bienvenidos!</ion-card-title>
+        <ion-card-subtitle style="color: black;">Inicio de sesion</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content style="color: black;" [formGroup]="formularioLogin">
+        <ion-input type="nombre" fill="transparent" label="Nombre de usuario" labelPlacement="floating" helperText="Ingrese un usuario valido"
+        errorText="Usuario invalido" ngModel name formControlName="nombre"></ion-input>
+
+        <ion-input type="password" fill="transparent" label="Contraseña" labelPlacement="floating" helperText="Ingrese una contraseña"
+        errorText="Contraseña invalida" ngModel password formControlName="password"></ion-input>
+
+        <ion-button size="small" id="om" (click)="ingresar()">Ingresar</ion-button>
+          <ion-button [routerLink]="['/registro']" id="om" size="small">Registrarse</ion-button>
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
+</ion-content>

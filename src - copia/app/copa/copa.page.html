@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+    </ion-toolbar>
+  </ion-header>
+  <br><br><br><br><br><br><br><br><br><br>
+  <div class="container" id="c1">
+    <img
+      src="https://images.vexels.com/media/users/3/155395/isolated/preview/3ced49c3448bede9f79d9d57bff35586-silueta-de-vista-frontal-de-coche-deportivo-by-vexels.png"
+      id="c1">
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div class="container" id="c3">
+    <br>
+  <ion-footer>
+    <ion-card style="background-color: #1f2949;;">
+      <ion-card-header>
+        <ion-card-title>Seleccione tipo de usuario</ion-card-title>
+        <ion-label >Bienvenido {{ usuario.nombre }}</ion-label>
+      </ion-card-header>
+        <div class="ion-padding">
+          <ion-item>
+            <ion-select [(ngModel)]="selectedVal">
+              <ion-select-option *ngFor="let item of data xd" [value] ="item.id">
+                {{item.name}}
+              </ion-select-option>
+            </ion-select>
+            
+          </ion-item>
+        </div>
+      <ion-card-content>
+        <ion-footer>
+          <ion-toolbar class="ion-center">
+            <ion-button (click)="redirigirSegunSeleccion()" expand="full">
+              Redirigir
+            </ion-button>
+          </ion-toolbar>
+        </ion-footer>
+      </ion-card-content>
+      
+    </ion-card>
+  </ion-footer>
+
+  </div>
+
+</ion-content>

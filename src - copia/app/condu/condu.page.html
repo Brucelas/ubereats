@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container" id="c1">
+    <br>
+    <div class="container" id="imp">
+      <ion-title style="text-align: center;" style="margin-top: 10px;">Indicar horario</ion-title>
+    </div>
+    <br>
+    <ion-card style="background-color: #cfb833;" id="imp3">
+
+      <ion-card-content style="color: black;">
+        <ion-row>
+          <ion-col>
+            <ion-input expand="full" label-placement="floating" fill="outline"
+              placeholder="Desde donde comienza?" label="Destino"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-textarea label="Comentarios" labelPlacement="floating" fill="outline"
+          placeholder="Ingrese Comentarios"></ion-textarea>
+        <br>
+        <ion-input expand="full" label-placement="floating" fill="outline"
+        placeholder="Ingrese telefono" label="Telefono" type="tel"></ion-input>
+        <br>
+        <ion-input expand="full" label-placement="floating" fill="outline"
+        type="number" placeholder="$" label="Precio"></ion-input>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="container" id="c2">
+    <br><br><br><br>
+      <ion-button id="imp2">
+      <ion-title style="text-align: center;">Planificar viaje</ion-title>  
+      </ion-button>
+      
+
+  </div>
+
+</ion-content>
