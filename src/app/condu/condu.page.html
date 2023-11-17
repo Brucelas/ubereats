@@ -1,3 +1,4 @@
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -11,13 +12,22 @@
     </div>
     <br>
     <ion-card style="background-color: #cfb833;" id="imp3">
-
       <ion-card-content style="color: black;">
         <ion-row>
           <ion-col>
-            <ion-input expand="full" label-placement="floating" fill="outline"
-              placeholder="Desde donde comienza?" label="Destino"></ion-input>
+            <ion-input expand="full" label-placement="floating" fill="outline" placeholder="Desde donde comienza?"
+              label="Destino"></ion-input>
           </ion-col>
+          <ion-item (click)="addDirection()">
+            <ion-label class="normal">
+              Ubicación
+            </ion-label>
+            <ion-buttons slot="end">
+              <ion-button>
+                <ion-icon slot="icon-only" color="danger" name="location"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -34,21 +44,19 @@
         <ion-textarea label="Comentarios" labelPlacement="floating" fill="outline"
           placeholder="Ingrese Comentarios"></ion-textarea>
         <br>
-        <ion-input expand="full" label-placement="floating" fill="outline"
-        placeholder="Ingrese telefono" label="Telefono" type="tel"></ion-input>
+        <ion-input expand="full" label-placement="floating" fill="outline" placeholder="Ingrese telefono"
+          label="Telefono" type="tel"></ion-input>
         <br>
-        <ion-input expand="full" label-placement="floating" fill="outline"
-        type="number" placeholder="$" label="Precio"></ion-input>
+        <ion-input expand="full" label-placement="floating" fill="outline" type="number" placeholder="$"
+          label="Precio"></ion-input>
       </ion-card-content>
+
     </ion-card>
   </div>
   <div class="container" id="c2">
     <br><br><br><br>
-      <ion-button id="imp2">
-      <ion-title style="text-align: center;">Planificar viaje</ion-title>  
-      </ion-button>
-      
-
+    <ion-button id="imp2">
+      <ion-title style="text-align: center;">Planificar viaje</ion-title>
+    </ion-button>
   </div>
-
 </ion-content>
