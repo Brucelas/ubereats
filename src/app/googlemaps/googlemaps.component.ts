@@ -6,6 +6,7 @@ import { Geolocation } from '@capacitor/geolocation';
 
 declare var google: any;
 
+
 @Component({
   selector: 'google-maps',
   templateUrl: './googlemaps.component.html',
@@ -13,6 +14,8 @@ declare var google: any;
 })
 export class GooglemapsComponent implements OnInit {
 
+
+  // coordenadas cuenca
   @Input() position = {
     lat: -2.898116,
     lng: -78.99958149999999
@@ -21,106 +24,129 @@ export class GooglemapsComponent implements OnInit {
   label = {
     titulo: 'Ubicación',
     subtitulo: 'Mi ubicación de envío'
-  };
+  }
 
   map: any;
   marker: any;
   infowindow: any;
-  positionSet: any;
+  positionSet: any
 
-  @ViewChild('map')
-  divMap!: ElementRef;
+  @ViewChild('map', { static: false }) divMap: ElementRef;
 
   constructor(
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,
     private googlemapsService: GooglemapsService,
-    public modalController: ModalController
-  ) {}
+    public modalController: ModalController) {
+    this.divMap = {} as ElementRef;
+    }
+    ngOnInit(): void {
+      this.init();
 
-  ngOnInit(): void {
-    this.init();
-    console.log('position ->', this.position);
-  }
+      console.log('position ->', this.position)
+    }
 
   async init() {
-    try {
-      await this.googlemapsService.init();
-      this.initMap();
-    } catch (err) {
-      console.log(err);
+
+      this.googlemapsService.init(this.renderer, this.document).then(() => {
+        this.initMap();
+      }).catch((error) => {
+        console.log(error);
+      });
+
     }
-  }
 
-  initMap() {
-    const position = this.position;
 
-    const latLng = new google.maps.LatLng(position.lat, position.lng);
 
-    const mapOptions = {
-      center: latLng,
-      zoom: 15,
-      disableDefaultUI: true,
-      clickableIcons: false,
-    };
 
-    this.map = new google.maps.Map(this.divMap.nativeElement, mapOptions);
-    this.marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      draggable: false,
-    });
+    initMap() {
 
-    this.map.addListener('click', (event: any) => {
-      const clickedPosition = {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
+      const position = this.position;
+
+      let latLng = new google.maps.LatLng(position.lat, position.lng);
+
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        disableDefaultUI: true,
+        clickableIcons: false,
       };
-      this.addMarker(clickedPosition);
-    });
 
-    this.infowindow = new google.maps.InfoWindow();
-    this.addMarker(position);
-    this.setInfoWindow(this.marker, this.label.titulo, this.label.subtitulo);
-  }
+      this.map = new google.maps.Map(this.divMap.nativeElement, mapOptions);
+      this.marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        draggable: false,
+      });
+      this.clickHandleEvent();
+      this.infowindow = new google.maps.InfoWindow();
+      this.addMarker(position);
+      this.setInfoWindow(this.marker, this.label.titulo, this.label.subtitulo);
 
-  addMarker(position: any) {
-    const latLng = new google.maps.LatLng(position.lat, position.lng);
+    }
 
-    this.marker.setPosition(latLng);
-    this.map.panTo(position);
-    this.positionSet = position;
-  }
+    clickHandleEvent() {
 
-  setInfoWindow(marker: any, titulo: string, subtitulo: string) {
-    const contentString = `<div id="contentInsideMap">
-      <div></div>
-      <p style="font-weight: bold; margin-bottom: 5px;">${titulo}</p>
-      <div id="bodyContent">
-        <p class="normal m-0">${subtitulo}</p>
-      </div>
-    </div>`;
-    this.infowindow.setContent(contentString);
-    this.infowindow.open(this.map, marker);
-  }
+      this.map.addListener('click', (event: any) => {
+        const position = {
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+        };
+        this.addMarker(position);
+      });
+
+    }
+
+
+
+    addMarker(position: any): void {
+
+      let latLng = new google.maps.LatLng(position.lat, position.lng);
+
+      this.marker.setPosition(latLng);
+      this.map.panTo(position);
+      this.positionSet = position;
+
+    }
+
+
+    setInfoWindow(marker: any, titulo: string, subtitulo: string) {
+
+      const contentString = '<div id="contentInsideMap">' +
+        '<div>' +
+        '</div>' +
+        '<p style="font-weight: bold; margin-bottom: 5px;">' + titulo + '</p>' +
+        '<div id="bodyContent">' +
+        '<p class"normal m-0">'
+        + subtitulo + '</p>' +
+        '</div>' +
+        '</div>';
+      this.infowindow.setContent(contentString);
+      this.infowindow.open(this.map, marker);
+
+    }
 
   async mylocation() {
-    console.log('mylocation() click');
 
-    try {
-      const res = await Geolocation['getCurrentPosition']();
-      const position = {
-        lat: res.coords.latitude,
-        lng: res.coords.longitude,
-      };
-      this.addMarker(position);
-    } catch (error) {
-      console.error('Error getting current position:', error);
+      console.log('mylocation() click')
+
+      Geolocation.getCurrentPosition().then((res) => {
+
+        console.log('mylocation() -> get ', res);
+
+        const position = {
+          lat: res.coords.latitude,
+          lng: res.coords.longitude,
+        }
+        this.addMarker(position);
+
+      });
+
     }
-  }
 
-  aceptar() {
-    console.log('click aceptar -> ', this.positionSet);
-    this.modalController.dismiss({ pos: this.positionSet });
+    aceptar() {
+      console.log('click aceptar -> ', this.positionSet);
+      this.modalController.dismiss({ pos: this.positionSet })
+    }
+
   }
-}
