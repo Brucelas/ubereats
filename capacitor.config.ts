@@ -1,17 +1,12 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.example.app',
   appName: 'new',
   webDir: 'www',
-  "plugins": {
-    "Geolocation": {
-      "forceShow": true
-    },
   server: {
     androidScheme: 'https'
   }
-}
 };
 
 export default config;

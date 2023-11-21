@@ -8,8 +8,7 @@ import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
   styleUrls: ['./condu.page.scss'],
 })
 export class ConduPage implements OnInit {
-  ingresarEnable: any;
-  usuario: any = {}; 
+  usuario: any = {};
 
   constructor(private modalController: ModalController) {}
 
@@ -17,13 +16,13 @@ export class ConduPage implements OnInit {
 
   async addDirection() {
     const ubicacion = this.usuario ? this.usuario.ubicacion : null;
-    let positionInput = {  
+    let positionInput = {
       lat: 0,
       lng: 0,
     };
 
     if (ubicacion) {
-      positionInput = ubicacion; 
+      positionInput = ubicacion;
     }
 
     const modalAdd = await this.modalController.create({
@@ -32,16 +31,14 @@ export class ConduPage implements OnInit {
       mode: 'md',
       componentProps: { position: positionInput },
     });
-    
+
     await modalAdd.present();
 
-
     const { data } = await modalAdd.onWillDismiss();
-    
-    if (data) {
-      console.log('data -> ', data);
+
+    if (data && data.pos) {
       this.usuario.ubicacion = data.pos;
-      console.log('this.cliente -> ', this.usuario);
+      console.log('this.usuario -> ', this.usuario);
     }
   }
 }

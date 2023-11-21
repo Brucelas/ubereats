@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +7,16 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor( private geolocation:Geolocation) {
-    this.getGeolocation();
+  constructor() {
+    this.printCurrentPosition();
   }
 
-  getGeolocation(){
-    
-    this.geolocation.getCurrentPosition().then((resp)=>{
-      console.log("resp",resp);
-    }).catch((error)=>{
-      console.log('error getting location', error);
-    });
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe((data)=>{
-
-    });
+  async printCurrentPosition() {
+    try {
+      const coordinates = await Geolocation.getCurrentPosition();
+      console.log('Current position:', coordinates);
+    } catch (error) {
+      console.error('Error getting current position', error);
+    }
   }
 }

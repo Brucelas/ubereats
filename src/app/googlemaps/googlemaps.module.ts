@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';;
+import { IonicModule } from '@ionic/angular';
 import { GooglemapsComponent } from './googlemaps.component';
+import { GooglemapsService } from './googlemaps.service';
 
 @NgModule({
-  declarations:[
+  declarations: [
     GooglemapsComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
-  ], exports:[
+  ],
+  providers: [
+    GooglemapsService 
+  ],
+  exports: [
     GooglemapsComponent,
   ]
 })

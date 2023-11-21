@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 
 declare var google: any;
 
@@ -9,7 +9,6 @@ declare var google: any;
 })
 export class GooglemapsService {
 
-  // AIzLSyCzwRcOLLgw9xfAaIt11HD523Q69g62J3Z
 
   apiKey = environment.ApiKeyGoogleMaps;
   mapsLoaded = false;
