@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  ApiKeyGoogleMaps:'AIzaSyDJSTHN3dWyj-sR1IbfddPQHlaOr2bgbyQ',
+  ApiKeyGoogleMaps: 'AIzaSyDJSTHN3dWyj-sR1IbfddPQHlaOr2bgbyQ',
+
+  firebaseConfig : {
+    apiKey: "AIzaSyCuxIhR5XYAFYoczN5Ityx_-f-Lx5wBU3A",
+    authDomain: "ubereats-b5d35.firebaseapp.com",
+    projectId: "ubereats-b5d35",
+    storageBucket: "ubereats-b5d35.appspot.com",
+    messagingSenderId: "113622490219",
+    appId: "1:113622490219:web:086205688982b84cb0a52e",
+    measurementId: "G-SEB8TCENKS"
+  },
 
 };
 /*

@@ -37,7 +37,11 @@ const routes: Routes = [
   {
     path: 'googlemaps',
     loadChildren: () => import('./googlemaps/googlemaps.module').then( m => m.GooglemapsPageModule)
+  },  {
+    path: 'reset',
+    loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
   },
+
 
   
 ];

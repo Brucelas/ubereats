@@ -24,7 +24,9 @@
 
         <ion-input type="password" fill="transparent" label="Contraseña" labelPlacement="floating" helperText="Ingrese una contraseña"
         errorText="Contraseña invalida" ngModel password formControlName="password"></ion-input>
-
+        <div class="restablecer">
+          <a [routerLink]="['/reset']">Restablecer contrasena</a>
+        </div>
         <ion-button size="small" id="om" (click)="ingresar()">Ingresar</ion-button>
           <ion-button [routerLink]="['/registro']" id="om" size="small">Registrarse</ion-button>
       </ion-card-content>
