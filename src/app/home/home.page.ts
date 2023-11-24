@@ -8,6 +8,9 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
+restablecerContrasena() {
+throw new Error('Method not implemented.');
+}
 
   formularioLogin: FormGroup;
 
@@ -58,4 +61,7 @@ this.formularioLogin = this.fb.group({
       return;
     }
   }
+  irARestablecer() {
+    this.navCtrl.navigateForward('/restablecer');
+}
 }

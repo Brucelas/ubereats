@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ubereats-b5d35": {
+      "hosting": {
+        "app": [
+          "ubereats-b5d35"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ubereats-b5d35"
+  }
+}

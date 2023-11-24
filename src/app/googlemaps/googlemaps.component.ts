@@ -24,7 +24,7 @@ export class GooglemapsComponent implements OnInit {
 
   label = {
     titulo: 'Ubicación',
-    subtitulo: 'Mi ubicación de envío'
+    subtitulo: 'mi ubicación actual'
   }
 
   map: any;
